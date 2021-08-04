@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '@material-ui/core/Button';
 
 const Change = async (e) => {
 
@@ -73,8 +74,9 @@ const Change = async (e) => {
 function Array (){
     return(
         <div>
-            <video controls id="vida"/>
-            <button onClick={Change}>Change</button>
+             <h1 id='title'><span>Cloudinary Video Concatenator</span></h1>
+            <video controls id="vida"/><br/><br/>
+            <Button variant="contained" color ="primary" onClick={Change}>Change</Button>
         </div>
     )
 }export default Array

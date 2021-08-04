@@ -13,8 +13,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Concatenator/> */}
-      <Array/>
+      <Concatenator/>
+      {/* <Array/> */}
 
     </div>
   )

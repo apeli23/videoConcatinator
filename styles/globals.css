@@ -1,16 +1,57 @@
-html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+  background:
+  linear-gradient(
+    rgba(0, 0, 0, 0.3), 
+    rgba(212, 201, 201, 0.3)
+  ),
+  url(https://mcdn.wallpapersafari.com/medium/62/40/Ls8xNQ.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  text-align: center;
+ 
 }
 
 * {
+  margin: 10;
+  padding: 10;
   box-sizing: border-box;
+}
+#title {
+     
+  top: 50%;
+  left: 0;
+  right: 0;
+  color: #FFF;
+  text-align: center;
+  font-family: "lato", sans-serif;
+  font-weight: 300;
+  font-size: 50px;
+  letter-spacing: 10px;
+   
+}
+#title span {
+  background: -webkit-linear-gradient(rgb(255, 255, 255), #38495a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#subtitle {
+     
+  top: 50%;
+  left: 0;
+  right: 0;
+  color: #FFF;
+  text-align: center;
+  font-family: "lato", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  letter-spacing: 10px;
+   
+}
+#subtitle span {
+  background: -webkit-linear-gradient(rgb(255, 255, 255), #38495a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
