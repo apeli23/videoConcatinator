@@ -16,14 +16,14 @@ export const config = {
 export default async function handler(req, res) {
     if (req.method === 'POST') {
       // Process a POST request
-      console.log("works")
+      console.log("api works start here")
         try {
     //         const sample = "https://res.cloudinary.com/dogjmmett/video/upload/v1628032985/videoplayback_nzlzbv.mp4"
             const fileStr = req.body.data
             console.log("body.data",fileStr)
             const uploadedResponse = await cloudinary.uploader.
                 upload_large(fileStr,{
-                // resource_type: "video",
+                resource_type: "video",
                 chunk_size: 6000000,
                 // upload_preset: "video_concatenator"
                 })
