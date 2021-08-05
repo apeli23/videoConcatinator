@@ -5,20 +5,25 @@ function Fetch () {
       
     const  Change = async (event) => {
         const file = event.target.files;
-        console.log("uploaded file", file)
-        
+        // console.log("uploaded file", file)
+        const clips =[ event.target.files[0], event.target.files[1]]
+        // console.log("array", clips)
+        let list = clips.map((url) =>
+            console.log("map",url)
+        );
         let blob = new Blob( event.target.files, {type: "video/webm" });
         const reader = new FileReader();
         reader.readAsDataURL(blob)
         reader.onloadend = () => {
-            uploadImage(reader.result);
+            // console.log(reader.result)
+            // uploadImage(reader.result);
         };
 
         const uploadImage = async ( base64EncodedImage) => {
-            console.log(base64EncodedImage)
+            // console.log(base64EncodedImage)
 
             try {
-                await fetch('/api/upload', {
+                await fetch('/api/test', {
                     method: 'POST',
                     body: JSON.stringify({ data:base64EncodedImage }),
                     sizeLimit: '20mb',
