@@ -27,8 +27,8 @@ export default async function handler(req, res) {
                 chunk_size: 6000000,
                 // upload_preset: "video_concatenator"
                 })
-                console.log(uploadedResponse)
-                res.json({msg: "YEAH!!!"})     
+                // console.log(uploadedResponse)
+                res.json(uploadedResponse)     
       } catch (error) {
           
       }

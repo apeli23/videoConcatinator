@@ -14,20 +14,22 @@ function Concatenate () {
             reader.readAsDataURL(blob)
                 reader.onloadend = () => {
                     // console.log("result", reader.result)
+                    uploadVideos(reader.result)
                 }
-            // uploadVideos(reader.result)
+                
         };   
         
         
     }
     const uploadVideos = async (base64url) => {
-        console.log("base64_to_POST", base64url)
+        // console.log("base64_to_POST", base64url)
         try {
             await fetch('/api/upload', {
                 method: 'POST',
                 body: JSON.stringify({ data:base64url}),
                 headers: { 'Content-Type': 'application/json' },
-            });
+            })
+            // .then(console.log(res));
         } catch (error) {
           console.error(error);
         }
