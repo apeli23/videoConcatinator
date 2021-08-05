@@ -1,31 +1,36 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
-import { Base64 } from 'js-base64';
 
 function Concatenate () {
 
     const handleUpload = async (e) => {
-        const file = e.target.files[0];
-        console.log("uploaded file", file)
+        for(let i=0; i<e.target.files.length;i++) {
+            console.log("uploaded", e.target.files[i])
+
+            let blob = new Blob(e.target.files, {type: "video/webm" });
+            console.log("blob", blob);
+
+            const reader = new FileReader();
+            reader.readAsDataURL(blob)
+                reader.onloadend = () => {
+                    // console.log("result", reader.result)
+                }
+            // uploadVideos(reader.result)
+        };   
         
-        let blob = new Blob( e.target.files, {type: "video/webm" });
-        const reader = new FileReader();
-        reader.readAsDataURL(blob)
-        reader.onloadend = () => {
-            uploadVideo(reader.result);
-        };
+        
     }
-    const uploadVideo = async (base64EncodedImage) => {
-        console.log("bae64_to_post", base64EncodedImage)
-        // try {
-        //     await fetch('/api/upload', {
-        //         method: 'POST',
-        //         body: JSON.stringify({ data:base64EncodedImage }),
-        //         headers: { 'Content-Type': 'application/json' },
-        //     });
-        // } catch (error) {
-        //   console.error(error);
-        // }
+    const uploadVideos = async (base64url) => {
+        console.log("base64_to_POST", base64url)
+        try {
+            await fetch('/api/upload', {
+                method: 'POST',
+                body: JSON.stringify({ data:base64url}),
+                headers: { 'Content-Type': 'application/json' },
+            });
+        } catch (error) {
+          console.error(error);
+        }
     }
 
     const Change = async (e) => {
@@ -99,7 +104,7 @@ function Concatenate () {
         <div>
             <video width="300"  controls id="vida" /><br/><br/>
             <Button variant="contained" color ="primary" onClick={Change}>Concatenate</Button>
-            <input type="file" onChange= {handleInput} multiple/>
+            <input type="file" onChange= {handleUpload} multiple/>
         </div>
     )
 }export default Concatenate

@@ -18,17 +18,19 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
     // Process a POST request
       console.log("api works start here")
-    //   try {
-    //     let Files = req.body.data;
-
-    //     console.log("to_upload", Files)
-    //     let multipleFilePromise =  Files.map((file) =>
-    //     await cloudinary.uploader.upload_large(file.path,{
-    //         chunk_size: 6000000,
-    //     })
-    // );
-    //   } catch (error) {
+      try {
+        let fileStr = req.body.data;
+        console.log("backend received", fileStr)
+        const uploadedResponse = await cloudinary.uploader.
+                upload_large(fileStr,{
+                resource_type: "video",
+                chunk_size: 6000000,
+                // upload_preset: "video_concatenator"
+                })
+                console.log(uploadedResponse)
+                res.json({msg: "YEAH!!!"})     
+      } catch (error) {
           
-    //   }
+      }
     }
 }
