@@ -12,27 +12,27 @@ export const config = {
         sizeLimit: '20mb',
       },
     },
-  }
+}
+
 export default async function handler(req, res) {
     if (req.method === 'POST') {
-      // Process a POST request
+    // Process a POST request
       console.log("api works start here")
-        try {
-    //         const sample = "https://res.cloudinary.com/dogjmmett/video/upload/v1628032985/videoplayback_nzlzbv.mp4"
-            const fileStr = req.body.data
-            console.log("body.data",fileStr.length)
-            // const uploadedResponse = await cloudinary.uploader.
-            //     upload_large(fileStr,{
-            //     resource_type: "video",
-            //     chunk_size: 6000000,
-            //     // upload_preset: "video_concatenator"
-            //     })
-            //     console.log(uploadedResponse.url)
-            //     res.json(uploadedResponse.url)
-            } 
-        catch (error) {
-            console.log("error",error)
-          res.status(500).json(error,'Something wrong')
+      try {
+        let fileStr = req.body.data;
+        console.log("backend received", fileStr.length, "files")
+        for(let i=0; i<fileStr.length;i++) {
+          console.log("received data",[i])
+          const uploadedResponse = await cloudinary.uploader.
+                upload_large(fileStr[i],{ 
+                resource_type: "video",
+                chunk_size: 6000000,
+                })
+                console.log(uploadedResponse.url)
+        }
+      } catch (error) {
+        console.log("error",error)
+        // res.status(500).json(error,'Something wrong')
       }
     }
 }

@@ -20,17 +20,19 @@ export default async function handler(req, res) {
       console.log("api works start here")
       try {
         let fileStr = req.body.data;
-        console.log("backend received", fileStr)
-        const uploadedResponse = await cloudinary.uploader.
-                upload_large(fileStr,{
+        console.log("backend received", fileStr.length, "files")
+        for(let i=0; i<fileStr.length;i++) {
+          console.log("received data",[i])
+          const uploadedResponse = await cloudinary.uploader.
+                upload_large(fileStr[i],{ 
                 resource_type: "video",
                 chunk_size: 6000000,
                 // upload_preset: "video_concatenator"
                 })
-                // console.log(uploadedResponse)
-                res.json(uploadedResponse)     
+        }
       } catch (error) {
-          
+        console.log("error",error)
+        // res.status(500).json(error,'Something wrong')
       }
     }
 }
