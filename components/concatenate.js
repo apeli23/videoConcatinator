@@ -13,8 +13,8 @@ function Concatenate () {
             const reader = new FileReader();
             reader.readAsDataURL(blob)
                 reader.onloadend = () => {
-                    // console.log("result", reader.result)
-                    uploadVideos(reader.result)
+                    console.log("result", reader.result)
+                    // uploadVideos(reader.result)
                 }
                 
         };   
