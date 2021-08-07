@@ -29,7 +29,17 @@ export default async function handler(req, res) {
                 chunk_size: 6000000,
                 // upload_preset: "video_concatenator"
                 })
-        }
+              console.log(uploadedResponse.url)
+              // let urlarray = [];
+              // readers.push(uploadedResponse.url[i])
+              // console.log("array",urlarray)
+              {uploadedResponse.url.map((link, i) => (
+                <tr key={i}>
+                    <td>{console.log(link)}</td>
+                </tr>
+            ))}
+            }
+                
       } catch (error) {
         console.log("error",error)
         // res.status(500).json(error,'Something wrong')

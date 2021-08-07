@@ -49,8 +49,9 @@ function Concatenate () {
                     method: 'POST',
                     body: JSON.stringify({ data:base64url}),
                     headers: { 'Content-Type': 'application/json' },
-                })
-                // .then(console.log(res));
+                    })
+                    .then(res => res.json())
+                    
             } catch (error) {
               console.error(error);
             }
