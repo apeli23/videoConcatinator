@@ -16,26 +16,28 @@ export const config = {
 }
 
 export default async function handler(req, res) {
+  var link=[];
     if (req.method === 'POST') {
     // Process a POST request
       console.log("api works start here")
+      let uploaded_url = ""
       try {
         let fileStr = req.body.data;
-        console.log("backend received", fileStr.length, "files")
-        for(let i=0; i<fileStr.length;i++) 
-        {
-          // console.log("received data",[i])
-          const uploadedResponse = await cloudinary.uploader.
-                upload_large(fileStr[i],{ 
-                resource_type: "video",
-                chunk_size: 6000000,
-                }) 
-                 
-        } 
-           
+        console.log("backend received")
+         
+        const uploadedResponse = await cloudinary.uploader.upload_large(
+          fileStr,
+          {
+            resource_type: "video",
+            chunk_size: 6000000,
+          }
+        );
+        uploaded_url = uploadedResponse.secure_url
+        console.log("uploaded_url",uploaded_url)
+
       } catch (error) {
-        console.log("error",error)
-        // res.status(500).json(error,'Something wrong')
+        res.status(500).json(error,'Something wrong')
       }
+      res.status(200).json({data:uploaded_url})
     }
 }
