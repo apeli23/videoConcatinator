@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Concatenate from '../components/concatenate'
+import Test from '../components/test'
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
       </Head>
 
       <Concatenate/>
-
+      {/* <Test/> */}
     </div>
   )
 }

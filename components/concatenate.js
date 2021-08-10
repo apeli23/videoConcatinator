@@ -27,6 +27,7 @@ function Concatenate() {
     // Handle multiple fileuploads
     let files = e.target.files;
     console.log("files", files);
+ 
 
     // Abort if there were no files selected
     if (!files.length) return;
@@ -90,6 +91,7 @@ function Concatenate() {
     } catch (error) {
       console.error(error);
     }
+    
   };
 
   const Play = async (e) => {
@@ -110,3 +112,4 @@ function Concatenate() {
   );
 }
 export default Concatenate;
+ 
